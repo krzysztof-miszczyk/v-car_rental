@@ -1,13 +1,19 @@
-<!-- https://my.api.mockaroo.com/cars.json?key=f3d1e2f0
-https://my.api.mockaroo.com/customers.json?key=f3d1e2f0 -->
-
 <template>
-  <router-view />
+  <div class="bg-gray-200 h-screen">
+    <Navigation></Navigation>
+    <router-view />
+  </div>
 </template>
+
 
 <script>
 
+import Navigation from "@/components/Navigation";
+
 export default {
+  components: {
+    Navigation
+  }
 }
 </script>
 
