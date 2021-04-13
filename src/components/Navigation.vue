@@ -1,8 +1,8 @@
 <template>
-  <nav class="bg-gray-800 h-16 flex">
-    <a class="cursor-pointer select-none text-white m-auto text-center text-xl md:text-2xl font-thin uppercase letter-space focus:outline-none">
+  <nav class="bg-gray-800 h-16 flex shadow-2xl">
+    <router-link to="/" class="cursor-pointer select-none text-white m-auto text-center text-xl md:text-2xl font-thin uppercase letter-space focus:outline-none">
       car rental
-    </a>
+    </router-link>
   </nav>
 </template>
 
