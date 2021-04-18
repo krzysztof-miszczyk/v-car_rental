@@ -1,7 +1,14 @@
 <template>
   <div class="flex flex-col items-center w-full max-w-screen-2xl mx-auto">
     <Reservations :reservations="reservations" />
+  <button class="p-2 bg-blue-900 hover:bg-blue-800 text-center rounded-3xl shadow-2xl text-white active:shadow-md w-5/12 left-0 right-0 mx-auto focus:outline-none">Dodaj nową rezerwację</button>
   </div>
+<router-link
+    to="/available-cars"
+    class="max-w-screen-2xl p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md absolute bottom-8 w-10/12 left-0 right-0 mx-auto focus:outline-none"
+  >
+    Powrót do listy aut →
+  </router-link>
 </template>
 
 <script>

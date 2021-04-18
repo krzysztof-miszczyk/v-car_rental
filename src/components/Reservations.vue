@@ -2,7 +2,7 @@
 <div class="m-10"></div>
   <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-300 text-gray-800">
     <tr class="text-left border-b-2 border-gray-400">
-      <th class="px-4 py-3 text-xl">Numer</th>
+      <th class="px-4 py-3 text-xl">Nr rezerwacji</th>
       <th class="px-4 py-3 text-xl">Początek rezerwacji</th>
       <th class="px-4 py-3 text-xl">Koniec rezerwacji</th>
     </tr>
