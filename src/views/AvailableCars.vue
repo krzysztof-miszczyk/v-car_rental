@@ -3,8 +3,8 @@
     <p class="text-4xl text-center mx-auto mt-28">
       Wybierz samochód którym jesteś zainteresowany
     </p>
-    <div class="w-full flex m-10 flex-wrap justify-center">
-      <div class="m-5 bg-white rounded-lg p-10 w-80 justify-self-center" v-for="car in carList" :key="car.id">
+    <div class="w-full flex m-10 flex-wrap justify-center w-">
+      <div class="flex flex-col m-5 bg-white rounded-lg p-10 pb-0 w-80 justify-self-center" v-for="car in carList" :key="car.id">
         <router-link class="cursor-pointer" :to="`/available-cars/${car.id}`">
           <img :src="car.image" alt="car image" class="h-32 rounded-lg">
         </router-link>
@@ -14,6 +14,9 @@
         <p class="mt-3">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ducimus eaque eligendi eos harum, id ipsum.
         </p>
+        <router-link class="mx-auto p-3 px-6 m-3 text-center rounded-md" :to="`/available-cars/${car.id}`">
+          →
+        </router-link>
       </div>
     </div>
   </div>
