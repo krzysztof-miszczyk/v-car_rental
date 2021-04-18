@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center w-full max-w-screen-2xl mx-auto">
     <p class="text-4xl text-center mx-auto mt-28">
       Wybierz samochód którym jesteś zainteresowany
     </p>
