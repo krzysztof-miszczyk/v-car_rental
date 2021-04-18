@@ -2,7 +2,7 @@
 
   <router-link
     to="/available-cars"
-    class="p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md absolute bottom-8 w-10/12 left-0 right-0 mx-auto focus:outline-none"
+    class="max-w-screen-2xl p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md absolute bottom-8 w-10/12 left-0 right-0 mx-auto focus:outline-none"
   >
     Przejdź do listy dostepnych samochodów →
   </router-link>
