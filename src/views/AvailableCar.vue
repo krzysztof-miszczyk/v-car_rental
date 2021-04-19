@@ -1,7 +1,7 @@
 <template>
-  <button @click="checkCarReservations()" class="p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md fixed bottom-8 w-10/12 max-w-screen-2xl left-0 right-0 mx-auto focus:outline-none">
+  <router-link :to="`/available-cars/${car.id}/reservations`" class="fixed bottom-8 w-10/12 max-w-screen-2xl left-0 right-0 mx-auto w-full p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md focus:outline-none">
     Sprawdź rezerwacje {{car.name}} →
-  </button>
+  </router-link>
   <div class="flex flex-col items-center w-full max-w-screen-2xl mx-auto">
     <div class="mt-24">
       <p class="text-3xl text-center mb-5">
@@ -9,7 +9,7 @@
       </p>
       <CarImages :images="car.images"/>
     </div>
-    <div class="w-full max-w-3xl p-7 bg-white rounded-md mb-32">
+    <div class="w-full max-w-3xl p-7 bg-white rounded-md mb-5">
       <p class="text-2xl mb-2">
         Opis
       </p>
@@ -46,6 +46,9 @@
         </div>
       </div>
     </div>
+    <router-link :to="`/available-cars/`" class="w-full max-w-3xl mb-32 px-10 p-4 bg-white hover:bg-gray-100 text-center rounded-xl shadow-2xl active:shadow-md focus:outline-none">
+      ← Powrót do listy
+    </router-link>
   </div>
 </template>
 
@@ -64,11 +67,6 @@ export default {
     }
   },
   methods:{
-    checkCarReservations(){
-      const carObj = this.car
-      //this.$router.push({ path:`/available-cars/${carId}/reservations`});
-      this.$router.push({ name:'AvailableCarReservations', params: {id: carObj.id, carName:carObj.name}});   
-   }
   }
 }
 
