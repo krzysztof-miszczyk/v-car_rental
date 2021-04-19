@@ -14,10 +14,7 @@
         Opis
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur beatae debitis deleniti, dicta doloremque, ex facilis fugit ipsum nemo nisi nostrum obcaecati perferendis quia repellendus similique, tenetur unde! Ea.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur beatae debitis deleniti, dicta doloremque, ex facilis fugit ipsum nemo nisi nostrum obcaecati perferendis quia repellendus similique, tenetur unde! Ea.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur beatae debitis deleniti, dicta doloremque, ex facilis fugit ipsum nemo nisi nostrum obcaecati perferendis quia repellendus similique, tenetur unde! Ea.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur beatae debitis deleniti, dicta doloremque, ex facilis fugit ipsum nemo nisi nostrum obcaecati perferendis quia repellendus similique, tenetur unde! Ea.
+        {{car.description}}
       </p>
       <p class="text-2xl mt-6 mb-2">
         Parametry
@@ -61,83 +58,25 @@ export default {
     CarImages
   },
   data() {
-    // TODO: fetch data from mockaroo
     return {
-      car: car
+      car: { images: []}
     }
   },
+  async created() {
+    await this.fetchCar();
+  },
   methods:{
-    navigateToReservations(){
-      const carObj = this.car
-      this.$router.push({ name:'AvailableCarReservations', params: {id: carObj.id, carName:carObj.name}});
+    navigateToReservations() {
+      const carObj = this.car;
+      this.$router.push({ name:'AvailableCarReservations', params: {id: this.$route.params.id, carName: carObj.name}});
+    },
+    async fetchCar() {
+      const res = await fetch(
+          `https://my.api.mockaroo.com/cars/${this.$route.params.id}.json?key=962da010`
+      );
+      this.car = await res.json();
     }
   }
-}
-
-const car = {
-  id: 5,
-  name: 'BMW 3 Series',
-  images: [
-      'https://imgd.aeplcdn.com/1056x594/cw/ec/37067/BMW-3-Series-Exterior-167583.jpg?wm=0&q=85',
-      'https://imgd.aeplcdn.com/1056x594/n/cw/ec/37067/3-series-exterior-right-front-three-quarter-2.jpeg?q=85',
-      'https://imgd.aeplcdn.com/1056x594/n/cw/ec/37067/3-series-exterior-left-front-three-quarter-3.jpeg?q=85',
-      'https://imgd.aeplcdn.com/1056x594/n/cw/ec/37067/3-series-exterior-right-side-view.jpeg?q=85',
-      'https://imgd.aeplcdn.com/1056x594/n/cw/ec/37067/3-series-interior-dashboard.jpeg?q=85',
-      'https://imgd.aeplcdn.com/1056x594/n/cw/ec/37067/3-series-exterior-engine-shot.jpeg?q=85'
-  ],
-  description: '',
-  parameters: [
-    {
-      name: 'Marka',
-      value: 'BMW'
-    },
-    {
-      name: 'Model',
-      value: '3 Series'
-    },
-    {
-      name: 'Moc',
-      value: '420 HP'
-    },
-    {
-      name: 'Kolor',
-      value: 'Czerwony'
-    },
-    {
-      name: 'Spalanie',
-      value: '18l/100km'
-    },
-    {
-      name: 'Typ',
-      value: 'Coupe'
-    },
-    {
-      name: 'Liczba dzwi',
-      value: '3'
-    },
-    {
-      name: '0 - 100 km/h',
-      value: '3,5 sek.'
-    },
-  ],
-  loanConditions: [
-    {
-      name: 'Kaucja zwrotna',
-      value: '5000 zł'
-    },
-    {
-      name: 'Maksymalny czas wypożyczenia',
-      value: '7 dni'
-    },
-    {
-      name: 'Opłata za godzinę',
-      value: '25 zł'
-    },
-    {
-      name: 'Opłata za kilometr',
-      value: '5 zł'
-    },
-  ]
 }
 </script>
 
