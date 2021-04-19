@@ -1,7 +1,7 @@
 <template>
-  <router-link :to="`/available-cars/${car.id}/reservations`" class="p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md fixed bottom-8 w-10/12 max-w-screen-2xl left-0 right-0 mx-auto focus:outline-none">
+  <button @click="checkCarReservations()" class="p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md fixed bottom-8 w-10/12 max-w-screen-2xl left-0 right-0 mx-auto focus:outline-none">
     Sprawdź rezerwacje {{car.name}} →
-  </router-link>
+  </button>
   <div class="flex flex-col items-center w-full max-w-screen-2xl mx-auto">
     <div class="mt-24">
       <p class="text-3xl text-center mb-5">
@@ -62,6 +62,13 @@ export default {
     return {
       car: car
     }
+  },
+  methods:{
+    checkCarReservations(){
+      const carObj = this.car
+      //this.$router.push({ path:`/available-cars/${carId}/reservations`});
+      this.$router.push({ name:'AvailableCarReservations', params: {id: carObj.id, carName:carObj.name}});   
+   }
   }
 }
 
