@@ -6,29 +6,25 @@
     Przejdź do listy dostepnych samochodów →
   </router-link>
   <main class="flex flex-col">
-    <div class="flex w-full h-80 p-4 justify-center items-center">
-      <div class="m-10">
-        <div :style="{width: '800px', height: '200px'}">
+    <div class="flex flex-col md:flex-row w-full p-4 justify-center items-center">
+        <div class="w-full p-10">
           <BarChart
             v-if="barChartDataset.length"
             :chart-id="'barChart'"
             :dataset="barChartDataset"
           />
-        </div>
       </div>
-      <div class="m-5">
-        <div :style="{width: '800px', height: '100px'}">
+      <div class="w-full p-10">
           <PieChart
             v-if="pieChartDataset"
             :chart-id="'pieChart'"
             :dataset="pieChartDataset"
           />
-        </div>
       </div>
     </div>
-    <p class="m-10 text-xl text-center">
-      Tutaj pewnie jakies info o co w tej apce chodzi. Moze jakis fajny obrazek samochodu coś ala assets/car.svg
-    </p>
+<!--    <p class="m-10 text-xl text-center">-->
+<!--      Tutaj pewnie jakies info o co w tej apce chodzi. Moze jakis fajny obrazek samochodu coś ala assets/car.svg-->
+<!--    </p>-->
   </main>
 </template>
 
