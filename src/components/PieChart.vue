@@ -6,6 +6,7 @@
 
 <script>
 import {Chart, registerables} from "chart.js";
+
 export default {
   name: "PieChart",
   props: {
@@ -32,4 +33,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
