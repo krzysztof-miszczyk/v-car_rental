@@ -59,61 +59,61 @@ export default {
       buttonTxt: "Dodaj nową rezerwację",
     };
   },
-  // async created() {
-  //   this.reservations = await this.fetchReservations();
-  //   }
-  created() {
-    this.reservations = [
-      {
-        id: 1,
-        car_id: 4,
-        customer_id: 46,
-        start_date: "01/10/2020",
-        end_date: "05/10/2020",
-        value: 200,
-      },
-      {
-        id: 2,
-        car_id: 4,
-        customer_id: 32,
-        start_date: "10/10/2020",
-        end_date: "20/10/2020",
-        value: 500,
-      },
-      {
-        id: 3,
-        car_id: 4,
-        customer_id: 12,
-        start_date: "22/10/2020",
-        end_date: "28/10/2020",
-        value: 300,
-      },
-      {
-        id: 4,
-        car_id: 4,
-        customer_id: 67,
-        start_date: "02/11/2020",
-        end_date: "11/11/2020",
-        value: 450,
-      },
-      {
-        id: 5,
-        car_id: 4,
-        customer_id: 76,
-        start_date: "20/11/2020",
-        end_date: "21/11/2020",
-        value: 50,
-      },
-      {
-        id: 6,
-        car_id: 4,
-        customer_id: 83,
-        start_date: "22/11/2020",
-        end_date: "30/11/2020",
-        value: 400,
-      },
-    ];
-  },
+  async created() {
+    this.reservations = await this.fetchReservations();
+    },
+  // created() {
+  //   this.reservations = [
+  //     {
+  //       id: 1,
+  //       car_id: 4,
+  //       customer_id: 46,
+  //       start_date: "01/10/2020",
+  //       end_date: "05/10/2020",
+  //       value: 200,
+  //     },
+  //     {
+  //       id: 2,
+  //       car_id: 4,
+  //       customer_id: 32,
+  //       start_date: "10/10/2020",
+  //       end_date: "20/10/2020",
+  //       value: 500,
+  //     },
+  //     {
+  //       id: 3,
+  //       car_id: 4,
+  //       customer_id: 12,
+  //       start_date: "22/10/2020",
+  //       end_date: "28/10/2020",
+  //       value: 300,
+  //     },
+  //     {
+  //       id: 4,
+  //       car_id: 4,
+  //       customer_id: 67,
+  //       start_date: "02/11/2020",
+  //       end_date: "11/11/2020",
+  //       value: 450,
+  //     },
+  //     {
+  //       id: 5,
+  //       car_id: 4,
+  //       customer_id: 76,
+  //       start_date: "20/11/2020",
+  //       end_date: "21/11/2020",
+  //       value: 50,
+  //     },
+  //     {
+  //       id: 6,
+  //       car_id: 4,
+  //       customer_id: 83,
+  //       start_date: "22/11/2020",
+  //       end_date: "30/11/2020",
+  //       value: 400,
+  //     },
+  //   ];
+  // },
   methods: {
     addReservation(newReservation) {
       newReservation.car_id = this.carId;
@@ -128,8 +128,11 @@ export default {
       }
     },
     async fetchReservations() {
+      const domain = 'my.api.mockaroo.com';
+      const headers = {"X-API-Key": 'f3d1e2f0'};
+      const id = this.carId;
       const res = await fetch(
-        "https://my.api.mockaroo.com/car_reservations/123.json?key=f3d1e2f0"
+        `https://${domain}/car_reservations/${id}.json`, { headers }
       );
       const data = await res.json();
       return data;
