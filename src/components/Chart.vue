@@ -1,16 +1,20 @@
-<template>
-  <p class="text-4xl">
-    TODO chart
-  </p>
-</template>
-
 <script>
+import { Line } from 'vue-chartjs'
 
 export default {
-  name: "Chart",
-  props: ['chartdata', 'options'],
+  extends: Line,
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+    options: {
+      type: Object,
+      default: null
+    }
+  },
   mounted () {
-    // TODO create chart js
+    this.renderChart(this.chartdata, this.options)
   }
 }
 </script>
