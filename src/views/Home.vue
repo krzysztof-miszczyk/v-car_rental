@@ -8,8 +8,11 @@
   <main
     class="flex flex-col"
   >
+    <p class="m-10 text-xl text-center mt-24">
+      Car Rental jest aplikacją w której możesz wynająć samochód na godziny. Przejdź do listy dostepnych samochodów i wybierz ten który Ci pasuje.
+    </p>
     <div
-      class="flex w-full h-80 p-4 justify-center items-center"
+      class="flex w-full p-4 justify-center items-center"
       :style="{ marginTop: '65px'}"
     >
       <div class="m-10">
@@ -22,6 +25,9 @@
             :chart-id="'barChart'"
             :dataset="barChartDataset"
           />
+          <p class="w-full text-center mt-2">
+            Liczba rezerwacji
+          </p>
         </div>
       </div>
       <div class="m-5">
@@ -32,12 +38,12 @@
             :chart-id="'pieChart'"
             :dataset="pieChartDataset"
           />
+          <p class="w-full text-center mt-2">
+            Flota wypożyczalni
+          </p>
         </div>
       </div>
     </div>
-    <p class="m-10 text-xl text-center">
-      Tutaj pewnie jakies info o co w tej apce chodzi. Moze jakis fajny obrazek samochodu coś ala assets/car.svg
-    </p>
   </main>
 </template>
 
