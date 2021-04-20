@@ -5,26 +5,38 @@
   >
     Przejdź do listy dostepnych samochodów →
   </router-link>
-  <main class="flex flex-col">
-    <div class="flex flex-col md:flex-row w-full p-4 justify-center items-center">
-        <div class="w-full p-10">
+  <main
+    class="flex flex-col"
+  >
+    <div
+      class="flex w-full h-80 p-4 justify-center items-center"
+      :style="{ marginTop: '65px'}"
+    >
+      <div class="m-10">
+        <div
+          :style="{width: '800px'}"
+          class="chart-wrapper"
+        >
           <BarChart
             v-if="barChartDataset.length"
             :chart-id="'barChart'"
             :dataset="barChartDataset"
           />
+        </div>
       </div>
-      <div class="w-full p-10">
+      <div class="m-5">
+        <div :style="{width: '400px', height: '200px'}">
           <PieChart
             v-if="pieChartDataset"
             :chart-id="'pieChart'"
             :dataset="pieChartDataset"
           />
+        </div>
       </div>
     </div>
-<!--    <p class="m-10 text-xl text-center">-->
-<!--      Tutaj pewnie jakies info o co w tej apce chodzi. Moze jakis fajny obrazek samochodu coś ala assets/car.svg-->
-<!--    </p>-->
+    <p class="m-10 text-xl text-center">
+      Tutaj pewnie jakies info o co w tej apce chodzi. Moze jakis fajny obrazek samochodu coś ala assets/car.svg
+    </p>
   </main>
 </template>
 
@@ -62,8 +74,8 @@ export default {
         }
       },
       chartData1:
-        // TODO: fetch from api
-        [65, 59, 80, 81, 56, 55, 40]
+      // TODO: fetch from api
+          [65, 59, 80, 81, 56, 55, 40]
       ,
     }
   },
@@ -72,7 +84,7 @@ export default {
     const carQuantityPerModel = await getCarQuantityPerModel()
 
     this.barChartDataset = [{
-      // backgroundColor: ['#00ff00', '#000000'],
+      backgroundColor: ['red', 'green', 'orange', 'blue', 'yellow', 'purple', 'navy'],
       data: reservationsPerDay.map(data => ({
         x: data.reservations_date,
         y: data.reservations,
@@ -81,6 +93,7 @@ export default {
 
     this.pieChartDataset = {
       datasets: [{
+        backgroundColor: ['red', 'green', 'orange', 'blue', 'yellow', 'purple', 'navy'],
         data: carQuantityPerModel.map(value => value.cars_quantity),
       }],
       labels: carQuantityPerModel.map(value => value.car_model)
@@ -90,7 +103,13 @@ export default {
 </script>
 
 <style scoped>
-  .text-width {
-    width: 400px;
-  }
+.text-width {
+  width: 400px;
+}
+
+.chart-wrapper {
+  position: relative;
+  margin: auto;
+  height: 220px;
+}
 </style>

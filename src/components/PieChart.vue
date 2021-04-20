@@ -1,5 +1,7 @@
 <template>
-  <canvas :id="chartId" />
+  <div>
+    <canvas :id="chartId"/>
+  </div>
 </template>
 
 <script>
@@ -15,16 +17,22 @@ export default {
     },
     dataset: {
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     }
   },
   created() {
     Chart.register(...registerables)
   },
-  mounted () {
+  mounted() {
     new Chart(this.chartId, {
       type: 'pie',
-      data: this.dataset
+      data: this.dataset,
+      options: {
+        plugins: {
+          legend: {display: false},
+        }
+      }
     })
   }
 }

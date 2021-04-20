@@ -1,5 +1,7 @@
 <template>
-  <canvas :id="chartId" />
+  <div>
+    <canvas :id="chartId" />
+  </div>
 </template>
 
 <script>
@@ -28,8 +30,11 @@ export default {
             }
           }]
         },
+        maintainAspectRatio: true,
         tooltips: { enabled: true },
-        legend: { display: false },
+        plugins: {
+          legend: {display: false},
+        },
         elements: { point: { radius: 0 } }
       })
     }
