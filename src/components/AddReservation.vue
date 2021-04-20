@@ -1,5 +1,5 @@
 <template>
-  <form @submit="onSubmit" class="block items-center w-5/12 max-w-screen-xl mt-2 mb-10">
+  <form @submit="onSubmit" class="relative items-center w-5/12 max-w-screen-xl mt-2 mb-10">
     <div class="form-control">
       <label class="font-bold text-md">Początek rezerwacji</label>
       <input type="date" v-model="startDate" name="startDate" placeholder="od" />
@@ -8,7 +8,7 @@
       <label class="font-bold text-md">Koniec rezerwacji</label>
       <input type="date" v-model="endDate" name="endDate" placeholder="do" />
     </div>
-    <input type="submit" value="Zapisz rezerwację" class="absolute bottom w-5/12 my-1 p-2 bg-green-900 hover:bg-green-800 text-center rounded-3xl shadow-2xl text-white active:shadow-md focus:outline-none" />
+    <input type="submit" value="Zapisz rezerwację" class="absolute min-w-full my-1 p-2 bg-green-900 hover:bg-green-800 text-center rounded-3xl shadow-2xl text-white active:shadow-md focus:outline-none" />
   </form>
 </template>
 

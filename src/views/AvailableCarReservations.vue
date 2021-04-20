@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center w-full max-w-screen-xl">
+  <div class="flex flex-col items-center w-full">
     <p class="my-10"></p>
 
     <!-- Dynamiczna nazwa w oparciu o pole carName, które otrzymujemy jako property z routingu z komponentu nadrzędnego:
@@ -19,7 +19,10 @@
       {{ buttonTxt }}
     </button>
     <!-- Komponent formularza nowej rezerwacji. Po otrzymaniu zdarzenia add-reservation uruchamia funkcję "addReservation" -->
-    <div v-if="showAddReservation" class="flex flex-col items-center w-full max-w-screen-xl">
+    <div
+      v-if="showAddReservation"
+      class="flex flex-col items-center w-full max-w-screen-xl"
+    >
       <AddReservation @add-reservation="addReservation" />
     </div>
 
@@ -61,65 +64,28 @@ export default {
   },
   async created() {
     this.reservations = await this.fetchReservations();
-    },
-  // created() {
-  //   this.reservations = [
-  //     {
-  //       id: 1,
-  //       car_id: 4,
-  //       customer_id: 46,
-  //       start_date: "01/10/2020",
-  //       end_date: "05/10/2020",
-  //       value: 200,
-  //     },
-  //     {
-  //       id: 2,
-  //       car_id: 4,
-  //       customer_id: 32,
-  //       start_date: "10/10/2020",
-  //       end_date: "20/10/2020",
-  //       value: 500,
-  //     },
-  //     {
-  //       id: 3,
-  //       car_id: 4,
-  //       customer_id: 12,
-  //       start_date: "22/10/2020",
-  //       end_date: "28/10/2020",
-  //       value: 300,
-  //     },
-  //     {
-  //       id: 4,
-  //       car_id: 4,
-  //       customer_id: 67,
-  //       start_date: "02/11/2020",
-  //       end_date: "11/11/2020",
-  //       value: 450,
-  //     },
-  //     {
-  //       id: 5,
-  //       car_id: 4,
-  //       customer_id: 76,
-  //       start_date: "20/11/2020",
-  //       end_date: "21/11/2020",
-  //       value: 50,
-  //     },
-  //     {
-  //       id: 6,
-  //       car_id: 4,
-  //       customer_id: 83,
-  //       start_date: "22/11/2020",
-  //       end_date: "30/11/2020",
-  //       value: 400,
-  //     },
-  //   ];
-  // },
+  },
   methods: {
-    addReservation(newReservation) {
+    async addReservation(newReservation) {
       newReservation.car_id = this.carId;
+      const res = await fetch(
+        `https://my.api.mockaroo.com/car_reservation.json`,
+        {
+          headers: {
+            "X-API-Key": "f3d1e2f0",
+            "Content-type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(newReservation),
+        }
+      );
+      const data = await res.json();
+      // Mockaroo zwraca losowy obiekt, więc dla sprawdzenia czy funkcja działa poprawnie loguję go do konsoli.
+      console.log(data);
+      // Rezerwację z danymi wprowadzonymi przez użytkownika dodaję lokalnie do tabeli rezerwacji.
       this.reservations = [...this.reservations, newReservation];
-      console.log(this.reservations);
     },
+
     deleteReservation(id) {
       if (confirm("Czy na pewno chcesz usunąć rezerwację?")) {
         this.reservations = this.reservations.filter(
@@ -128,12 +94,12 @@ export default {
       }
     },
     async fetchReservations() {
-      const domain = 'my.api.mockaroo.com';
-      const headers = {"X-API-Key": 'f3d1e2f0'};
+      const domain = "my.api.mockaroo.com";
+      const headers = { "X-API-Key": "f3d1e2f0" };
       const id = this.carId;
-      const res = await fetch(
-        `https://${domain}/car_reservations/${id}.json`, { headers }
-      );
+      const res = await fetch(`https://${domain}/car_reservations/${id}.json`, {
+        headers,
+      });
       const data = await res.json();
       return data;
     },
