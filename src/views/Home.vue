@@ -3,14 +3,15 @@
     to="/available-cars"
     class="p-4 bg-gray-600 hover:bg-gray-500 text-center rounded-3xl shadow-2xl text-white active:shadow-md absolute bottom-8 w-10/12 left-0 right-0 mx-auto focus:outline-none"
   >
-    Przejdź do listy dostepnych samochodów →
+    Przejdź do listy dostępnych samochodów →
   </router-link>
   <main
     class="flex flex-col"
   >
-    <p class="m-10 text-xl text-center mt-24">
-      Car Rental jest aplikacją w której możesz wynająć samochód na godziny. Przejdź do listy dostepnych samochodów i wybierz ten który Ci pasuje.
-    </p>
+    <div class="m-10 text-xl text-center mt-24">
+      <p>Car Rental jest aplikacją w której możesz wynająć samochód na godziny.</p>
+      <p>Przejdź do listy dostępnych samochodów i wybierz ten, który Ci odpowiada.</p>
+    </div>
     <div
       class="flex w-full p-4 justify-center items-center"
       :style="{ marginTop: '65px'}"
