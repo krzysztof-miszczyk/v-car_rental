@@ -12,7 +12,7 @@
           {{car.name}}
         </p>
         <p class="mt-3">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ducimus eaque eligendi eos harum, id ipsum.
+          {{car.description}}
         </p>
         <router-link class="mx-auto p-3 px-6 m-3 text-center rounded-md" :to="`/available-cars/${car.id}`">
           →
